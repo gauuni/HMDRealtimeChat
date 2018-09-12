@@ -1,5 +1,8 @@
 PODS:
   - Alamofire (4.7.3)
+  - AlamofireObjectMapper (5.1.0):
+    - Alamofire (~> 4.1)
+    - ObjectMapper (~> 3.3)
   - IQKeyboardManagerSwift (6.1.1)
   - MarqueeLabel/Swift (3.1.6)
   - NotificationBannerSwift (1.6.3):
@@ -8,6 +11,7 @@ PODS:
   - NVActivityIndicatorView (4.3.0):
     - NVActivityIndicatorView/Presenter (= 4.3.0)
   - NVActivityIndicatorView/Presenter (4.3.0)
+  - ObjectMapper (3.3.0)
   - SDWebImage (4.4.2):
     - SDWebImage/Core (= 4.4.2)
   - SDWebImage/Core (4.4.2)
@@ -21,6 +25,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
+  - AlamofireObjectMapper
   - IQKeyboardManagerSwift
   - NotificationBannerSwift
   - NVActivityIndicatorView
@@ -33,10 +38,12 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - Alamofire
+    - AlamofireObjectMapper
     - IQKeyboardManagerSwift
     - MarqueeLabel
     - NotificationBannerSwift
     - NVActivityIndicatorView
+    - ObjectMapper
     - SDWebImage
     - SnapKit
     - Socket.IO-Client-Swift
@@ -47,10 +54,12 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
+  AlamofireObjectMapper: 3395e698901d8b0e6f48b7d0c43bd47875325102
   IQKeyboardManagerSwift: 977affaeb4d6e971975c7790a6850f31d38f1207
   MarqueeLabel: 0c41f08ef5773e29c0f71064a8fa788a2fd8b365
   NotificationBannerSwift: b231e4c3244848ef300e1c53ce027b9756b9b06f
   NVActivityIndicatorView: 963f62bf9f993fcf23218e55958e5b1761b9504c
+  ObjectMapper: b612bf8c8e99c4dc0bb6013a51f7c27966ed5da9
   SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
   Socket.IO-Client-Swift: 0afb192a562db90d50e3f7f7421c06925a3f0179
@@ -59,6 +68,6 @@ SPEC CHECKSUMS:
   SwiftyUserDefaults: 3d273b1739b68ada3145dc754a70ec775bc5c8be
   ViewDeck: 942d90dd23c9f97cc8038be352255378167edcca
 
-PODFILE CHECKSUM: 85604363c30d88ece33b07cd851a53009b5ade90
+PODFILE CHECKSUM: 5546dc2dc26a9da3dbfb1eaedcd4476801d8cf3a
 
 COCOAPODS: 1.5.0

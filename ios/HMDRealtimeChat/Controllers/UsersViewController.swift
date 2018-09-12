@@ -42,6 +42,7 @@ class UsersViewController: RootViewController {
     
     override func setViewWhenDidLoad() {
         setupTableView()
+        fetchUsers()
         
         self.addTitleBarButton(position: .right, title: "Log out", target: self, action: #selector(logoutPressed))
     }
@@ -54,6 +55,15 @@ extension UsersViewController{
     func setupTableView(){
         tableView.initialize(delegate: self)
         tableView.registerCellNibs(nibs: [UserCell.self])
+    }
+    
+    func fetchUsers(){
+        RootAPI.fetchOnlineUsers { (response) in
+            if let users = response?.data{
+                self.users = users.filter{ $0 != RootAuthManager.sharedInstance.username }
+                self.tableView.reloadData()
+            }
+        }
     }
 }
 
@@ -82,7 +92,15 @@ extension UsersViewController: UITableViewDataSource{
 // MARK: - UITableViewDelegate
 extension UsersViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let user = users[indexPath.row]
+        RootAPI.createChannel(senderId: RootAuthManager.sharedInstance.username, receiverId: user) { (response) in
+            if let channelId = response?.data{
+                let vc = RootLinker.getViewController(storyboard: .Main, aClass: ChatViewController.self) as! ChatViewController
+                vc.receiver = user
+                vc.channelId = channelId
+                self.pushVC(vc: vc)
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

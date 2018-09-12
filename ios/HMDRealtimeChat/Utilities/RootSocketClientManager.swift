@@ -56,12 +56,22 @@ class RootSocketClientManager: NSObject {
             let receiver = stringArr[1]
             let channelId = stringArr[2]
             
+            if sender == RootAuthManager.sharedInstance.username { return }
+            if receiver != RootAuthManager.sharedInstance.username { return }
+            
             RootAlert.sharedInstance.showConfirm(title: nil, message: sender + " has sent you a message") { (isAccept) in
                 if isAccept{
-                    let vc = RootLinker.getViewController(storyboard: .Main, aClass: ChatViewController.self) as! ChatViewController
-                    vc.receiver = receiver
-                    vc.channelId = channelId
-                    RootLinker.sharedInstance.rootViewDeckController?.centerViewController = vc
+                    
+                    RootLinker.getTopViewController()?.popVC()
+                    
+                    if let userVC = RootLinker.getTopViewController() as? UsersViewController{
+                        let vc = RootLinker.getViewController(storyboard: .Main, aClass: ChatViewController.self) as! ChatViewController
+                        vc.receiver = receiver
+                        vc.channelId = channelId
+                        userVC.pushVC(vc: vc)
+                        return
+                    }
+
                 }
             }
         }
@@ -77,7 +87,7 @@ class RootSocketClientManager: NSObject {
     
     public func disconnect(){
         
-        self.socket.emit(RootSocketClientManager.SocketEvents.offline, with: [RootAuthManager.sharedInstance.username])
+//        self.socket.emit(RootSocketClientManager.SocketEvents.offline, with: [RootAuthManager.sharedInstance.username])
         
         RootAuthManager.sharedInstance.username = ""
         

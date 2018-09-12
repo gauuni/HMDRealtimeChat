@@ -9,18 +9,23 @@
 import UIKit
 
 class MessageResponse: NSObject{
-    var username: String = ""
+    var sender: String = ""
+    var receiver: String = ""
     var content: String = ""
     
     init(data: [Any]) {
         super.init()
         if let stringArr = data as? [String]{
             if stringArr.count > 0{
-                self.username = stringArr[0]
+                self.sender = stringArr[0]
             }
             
             if stringArr.count > 1{
-                self.content = stringArr[1]
+                self.receiver = stringArr[1]
+            }
+            
+            if stringArr.count > 2{
+                self.content = stringArr[2]
             }
         }
     }
@@ -60,6 +65,13 @@ class ChatViewController: RootViewController {
         
         self.customization()
         self.fetchData()
+        
+        RootSocketClientManager.shared.socket.on(self.channelId) { (data, ack) in
+            let message = MessageResponse(data: data)
+            self.items.append(message)
+            self.tableView.insertRows(at: [IndexPath(row: self.items.count-1, section: 0)], with: .none)
+        }
+        
     }
     
     //MARK: ViewController lifecycle
@@ -73,6 +85,7 @@ class ChatViewController: RootViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         NotificationCenter.default.removeObserver(self)
+        RootSocketClientManager.shared.socket.off(self.channelId)
     }
 
 }
@@ -154,8 +167,10 @@ extension ChatViewController{
     @IBAction func sendMessage(_ sender: Any) {
         if let text = self.inputTextField.text {
             if text.count > 0 {
-                RootSocketClientManager.shared.send(channelId: self.channelId,
-                                                    content: [RootAuthManager.sharedInstance.username, receiver, text])
+                
+                RootAPI.publish(channelId: self.channelId, senderId: RootAuthManager.sharedInstance.username, receiverId: receiver, message: text) { (response) in
+                    
+                }
                 self.inputTextField.text = ""
             }
         }
@@ -191,7 +206,7 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let message = self.items[indexPath.row]
-        if message.username == RootAuthManager.sharedInstance.username{
+        if message.sender == RootAuthManager.sharedInstance.username{
             let cell = tableView.dequeueReusableCell(withIdentifier: "Sender", for: indexPath) as! SenderCell
             cell.clearCellData()
             cell.message.text = message.content

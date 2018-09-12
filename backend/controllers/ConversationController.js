@@ -27,15 +27,20 @@ module.exports = (app, io) => {
     io.on('connection', function (socket) {
 
         socket.on(Channels.online, username => {
-            users.push(username)
+            users.push({"username": username, "socketId": socket.id})
             console.log(username + " is active")
             io.emit(Channels.online, username)
         })
 
-        socket.on(Channels.offline, username => {
-            users.pop(username)
-            console.log(username + " is leaving")
-            io.emit(Channels.offline, username)
+        socket.on('disconnect', () =>{
+            var foundUser = users.find(user => {
+                return user.socketId == socket.id
+            })
+            
+            console.log(foundUser.username + " is leaving")
+            io.emit(Channels.offline, foundUser.username)
+
+            users.pop(foundUser)
         })
 
     });
@@ -65,7 +70,7 @@ module.exports = (app, io) => {
     })
 
     router.get('/users', (req, res) =>{
-        Utils.sendResponseDataWith(res, 200, null, [users])
+        Utils.sendResponseDataWith(res, 200, null, users)
     })
 
     app.use('/api/conversation', router)

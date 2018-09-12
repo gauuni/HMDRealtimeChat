@@ -69,6 +69,8 @@
 		CB2359CA2148F4CB00DB5240 /* ReceiverCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB2359C82148F4CB00DB5240 /* ReceiverCell.xib */; };
 		CB2359CD2148F4D500DB5240 /* SenderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2359CB2148F4D500DB5240 /* SenderCell.swift */; };
 		CB2359CE2148F4D500DB5240 /* SenderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB2359CC2148F4D500DB5240 /* SenderCell.xib */; };
+		CB2359D12149024500DB5240 /* RootAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2359D02149024500DB5240 /* RootAPI.swift */; };
+		CB2359ED214902FB00DB5240 /* GenericResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2359EC214902FB00DB5240 /* GenericResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -136,6 +138,8 @@
 		CB2359C82148F4CB00DB5240 /* ReceiverCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReceiverCell.xib; sourceTree = "<group>"; };
 		CB2359CB2148F4D500DB5240 /* SenderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenderCell.swift; sourceTree = "<group>"; };
 		CB2359CC2148F4D500DB5240 /* SenderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SenderCell.xib; sourceTree = "<group>"; };
+		CB2359D02149024500DB5240 /* RootAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootAPI.swift; sourceTree = "<group>"; };
+		CB2359EC214902FB00DB5240 /* GenericResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericResponse.swift; sourceTree = "<group>"; };
 		CB82A95421479F4200538F1C /* HMDRealtimeChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HMDRealtimeChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6B29DA4E82886DA3CBD95AA /* Pods_HMDRealtimeChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HMDRealtimeChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -173,6 +177,8 @@
 		CB2359412148C24700DB5240 /* HMDRealtimeChat */ = {
 			isa = PBXGroup;
 			children = (
+				CB2359DF214902E500DB5240 /* Models */,
+				CB2359CF2149023600DB5240 /* Network */,
 				CB2359B12148C2E100DB5240 /* Root */,
 				CB2359432148C24700DB5240 /* Extensions */,
 				CB23595C2148C24700DB5240 /* Utilities */,
@@ -310,6 +316,22 @@
 			path = Navigation;
 			sourceTree = "<group>";
 		};
+		CB2359CF2149023600DB5240 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				CB2359D02149024500DB5240 /* RootAPI.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		CB2359DF214902E500DB5240 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CB2359EC214902FB00DB5240 /* GenericResponse.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		CB82A94B21479F4200538F1C = {
 			isa = PBXGroup;
 			children = (
@@ -427,10 +449,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-HMDRealtimeChat/Pods-HMDRealtimeChat-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/MarqueeLabel/MarqueeLabel.framework",
 				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/NotificationBannerSwift/NotificationBannerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework",
@@ -442,10 +466,12 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MarqueeLabel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NotificationBannerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketIO.framework",
@@ -499,6 +525,7 @@
 				CB2359AF2148C24700DB5240 /* AppDelegate.swift in Sources */,
 				CB2359A32148C24700DB5240 /* RootMessage.swift in Sources */,
 				CB2359BC2148C2E100DB5240 /* RootContants.swift in Sources */,
+				CB2359D12149024500DB5240 /* RootAPI.swift in Sources */,
 				CB2359AD2148C24700DB5240 /* UserCell.swift in Sources */,
 				CB2359952148C24700DB5240 /* DateHelper.swift in Sources */,
 				CB2359982148C24700DB5240 /* RootType.swift in Sources */,
@@ -519,6 +546,7 @@
 				CB23597E2148C24700DB5240 /* ViewController.swift in Sources */,
 				CB2359892148C24700DB5240 /* UIStoryboardExtension.swift in Sources */,
 				CB2359802148C24700DB5240 /* UIView+Animations.swift in Sources */,
+				CB2359ED214902FB00DB5240 /* GenericResponse.swift in Sources */,
 				CB2359A42148C24700DB5240 /* RootLinker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
