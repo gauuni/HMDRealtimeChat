@@ -13,6 +13,7 @@ class RootAuthManager: NSObject {
     
     static let sharedInstance = RootAuthManager()
     
+    var username = ""
 
     
     override init() {

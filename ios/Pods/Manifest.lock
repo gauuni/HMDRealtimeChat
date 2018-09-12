@@ -1,4 +1,5 @@
 PODS:
+  - Alamofire (4.7.3)
   - IQKeyboardManagerSwift (6.1.1)
   - MarqueeLabel/Swift (3.1.6)
   - NotificationBannerSwift (1.6.3):
@@ -19,6 +20,7 @@ PODS:
   - ViewDeck (3.1.0)
 
 DEPENDENCIES:
+  - Alamofire
   - IQKeyboardManagerSwift
   - NotificationBannerSwift
   - NVActivityIndicatorView
@@ -30,6 +32,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
+    - Alamofire
     - IQKeyboardManagerSwift
     - MarqueeLabel
     - NotificationBannerSwift
@@ -43,6 +46,7 @@ SPEC REPOS:
     - ViewDeck
 
 SPEC CHECKSUMS:
+  Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
   IQKeyboardManagerSwift: 977affaeb4d6e971975c7790a6850f31d38f1207
   MarqueeLabel: 0c41f08ef5773e29c0f71064a8fa788a2fd8b365
   NotificationBannerSwift: b231e4c3244848ef300e1c53ce027b9756b9b06f
@@ -55,6 +59,6 @@ SPEC CHECKSUMS:
   SwiftyUserDefaults: 3d273b1739b68ada3145dc754a70ec775bc5c8be
   ViewDeck: 942d90dd23c9f97cc8038be352255378167edcca
 
-PODFILE CHECKSUM: cb2e7fd453344a58b5f211892ab03b5f6c2745f1
+PODFILE CHECKSUM: 85604363c30d88ece33b07cd851a53009b5ade90
 
 COCOAPODS: 1.5.0

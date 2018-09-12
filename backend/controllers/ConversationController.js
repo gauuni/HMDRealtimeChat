@@ -6,6 +6,10 @@ router.use(bodyParser.json())
 var User = require('../schemas/User')
 var Utils = require('../utils')
 var Channels = require('../socketChannels')
+var uniqid = require('uniqid')
+
+var userChannels = []
+var users = []
 
 module.exports = (app, io) => {
 
@@ -22,12 +26,18 @@ module.exports = (app, io) => {
     // the socket won't be connected to the websocket server.
     io.on('connection', function (socket) {
 
-        socket.on(Channels.connectUser, username => {
-
-            console.log(username + " is online")
+        socket.on(Channels.online, username => {
+            users.push(username)
+            console.log(username + " is active")
+            io.emit(Channels.online, username)
         })
 
-        
+        socket.on(Channels.offline, username => {
+            users.pop(username)
+            console.log(username + " is leaving")
+            io.emit(Channels.offline, username)
+        })
+
     });
 
 
@@ -38,12 +48,25 @@ module.exports = (app, io) => {
     })
     
     router.post('/publish', (req, res) =>{
-        var topic = req.body.topic
+        var channelId = req.body.channelId
+        var sender = req.body.sender
+        var receiver = req.body.receiver
         var message = req.body.message
-        io.emit(topic, message)
+        io.emit(channelId, sender, receiver, message)
         Utils.sendResponseDataWith(res, 200, null, null)
     })
 
+    router.post('/channels', (req, res)=>{
+        var sender = req.body.sender
+        var receiver = req.body.receiver
+        var channelId = uniqid('socketio-')
+        io.emit(Channels.channelGenerated, sender, receiver, channelId)
+        Utils.sendResponseDataWith(res, 200, null, channelId)
+    })
+
+    router.get('/users', (req, res) =>{
+        Utils.sendResponseDataWith(res, 200, null, [users])
+    })
 
     app.use('/api/conversation', router)
 

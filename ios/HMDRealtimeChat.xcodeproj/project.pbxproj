@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1156FDD28F4729383EC587AC /* Pods_HMDRealtimeChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6B29DA4E82886DA3CBD95AA /* Pods_HMDRealtimeChat.framework */; };
-		5C4107106EA6B41E94450D7C /* Pods_DemoSocketIOClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E16D50CCA9C27E848D5C5E7 /* Pods_DemoSocketIOClient.framework */; };
 		CB23597E2148C24700DB5240 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2359422148C24700DB5240 /* ViewController.swift */; };
 		CB23597F2148C24700DB5240 /* UIFont+MonserratSystemFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2359442148C24700DB5240 /* UIFont+MonserratSystemFont.swift */; };
 		CB2359802148C24700DB5240 /* UIView+Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2359452148C24700DB5240 /* UIView+Animations.swift */; };
@@ -61,6 +60,15 @@
 		CB2359BA2148C2E100DB5240 /* RootPrefrences.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2359B52148C2E100DB5240 /* RootPrefrences.swift */; };
 		CB2359BB2148C2E100DB5240 /* RootViewDeckController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2359B62148C2E100DB5240 /* RootViewDeckController.swift */; };
 		CB2359BC2148C2E100DB5240 /* RootContants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2359B72148C2E100DB5240 /* RootContants.swift */; };
+		CB2359BE2148C60C00DB5240 /* RootSocketClientManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2359BD2148C60C00DB5240 /* RootSocketClientManager.swift */; };
+		CB2359C02148C80C00DB5240 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2359BF2148C80C00DB5240 /* LoginViewController.swift */; };
+		CB2359C22148C84E00DB5240 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2359C12148C84E00DB5240 /* ChatViewController.swift */; };
+		CB2359C42148CA2600DB5240 /* RootNavigationChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2359C32148CA2600DB5240 /* RootNavigationChat.swift */; };
+		CB2359C62148CA3700DB5240 /* RootNavigationUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2359C52148CA3700DB5240 /* RootNavigationUser.swift */; };
+		CB2359C92148F4CB00DB5240 /* ReceiverCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2359C72148F4CB00DB5240 /* ReceiverCell.swift */; };
+		CB2359CA2148F4CB00DB5240 /* ReceiverCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB2359C82148F4CB00DB5240 /* ReceiverCell.xib */; };
+		CB2359CD2148F4D500DB5240 /* SenderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2359CB2148F4D500DB5240 /* SenderCell.swift */; };
+		CB2359CE2148F4D500DB5240 /* SenderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB2359CC2148F4D500DB5240 /* SenderCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -119,6 +127,15 @@
 		CB2359B52148C2E100DB5240 /* RootPrefrences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootPrefrences.swift; sourceTree = "<group>"; };
 		CB2359B62148C2E100DB5240 /* RootViewDeckController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewDeckController.swift; sourceTree = "<group>"; };
 		CB2359B72148C2E100DB5240 /* RootContants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootContants.swift; sourceTree = "<group>"; };
+		CB2359BD2148C60C00DB5240 /* RootSocketClientManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootSocketClientManager.swift; sourceTree = "<group>"; };
+		CB2359BF2148C80C00DB5240 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		CB2359C12148C84E00DB5240 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		CB2359C32148CA2600DB5240 /* RootNavigationChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootNavigationChat.swift; sourceTree = "<group>"; };
+		CB2359C52148CA3700DB5240 /* RootNavigationUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootNavigationUser.swift; sourceTree = "<group>"; };
+		CB2359C72148F4CB00DB5240 /* ReceiverCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiverCell.swift; sourceTree = "<group>"; };
+		CB2359C82148F4CB00DB5240 /* ReceiverCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReceiverCell.xib; sourceTree = "<group>"; };
+		CB2359CB2148F4D500DB5240 /* SenderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenderCell.swift; sourceTree = "<group>"; };
+		CB2359CC2148F4D500DB5240 /* SenderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SenderCell.xib; sourceTree = "<group>"; };
 		CB82A95421479F4200538F1C /* HMDRealtimeChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HMDRealtimeChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6B29DA4E82886DA3CBD95AA /* Pods_HMDRealtimeChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HMDRealtimeChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -128,7 +145,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5C4107106EA6B41E94450D7C /* Pods_DemoSocketIOClient.framework in Frameworks */,
 				1156FDD28F4729383EC587AC /* Pods_HMDRealtimeChat.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -158,7 +174,6 @@
 			isa = PBXGroup;
 			children = (
 				CB2359B12148C2E100DB5240 /* Root */,
-				CB2359422148C24700DB5240 /* ViewController.swift */,
 				CB2359432148C24700DB5240 /* Extensions */,
 				CB23595C2148C24700DB5240 /* Utilities */,
 				CB23596E2148C24700DB5240 /* Controllers */,
@@ -216,6 +231,7 @@
 				CB23596B2148C24700DB5240 /* RootError.swift */,
 				CB23596C2148C24700DB5240 /* RootStyleManager.swift */,
 				CB23596D2148C24700DB5240 /* RootAlert.swift */,
+				CB2359BD2148C60C00DB5240 /* RootSocketClientManager.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -223,7 +239,10 @@
 		CB23596E2148C24700DB5240 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				CB2359422148C24700DB5240 /* ViewController.swift */,
 				CB23596F2148C24700DB5240 /* UsersViewController.swift */,
+				CB2359BF2148C80C00DB5240 /* LoginViewController.swift */,
+				CB2359C12148C84E00DB5240 /* ChatViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -252,6 +271,10 @@
 				CB2359772148C24700DB5240 /* BaseTableViewCell.swift */,
 				CB2359782148C24700DB5240 /* UserCell.xib */,
 				CB2359792148C24700DB5240 /* UserCell.swift */,
+				CB2359C72148F4CB00DB5240 /* ReceiverCell.swift */,
+				CB2359C82148F4CB00DB5240 /* ReceiverCell.xib */,
+				CB2359CB2148F4D500DB5240 /* SenderCell.swift */,
+				CB2359CC2148F4D500DB5240 /* SenderCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -281,6 +304,8 @@
 		CB2359B32148C2E100DB5240 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				CB2359C32148CA2600DB5240 /* RootNavigationChat.swift */,
+				CB2359C52148CA3700DB5240 /* RootNavigationUser.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -365,8 +390,10 @@
 			files = (
 				CB2359A92148C24700DB5240 /* LaunchScreen.storyboard in Resources */,
 				CB2359AA2148C24700DB5240 /* Main.storyboard in Resources */,
+				CB2359CA2148F4CB00DB5240 /* ReceiverCell.xib in Resources */,
 				CB2359AE2148C24700DB5240 /* Assets.xcassets in Resources */,
 				CB2359B02148C24700DB5240 /* Info.plist in Resources */,
+				CB2359CE2148F4D500DB5240 /* SenderCell.xib in Resources */,
 				CB2359AC2148C24700DB5240 /* UserCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -399,6 +426,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-HMDRealtimeChat/Pods-HMDRealtimeChat-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/MarqueeLabel/MarqueeLabel.framework",
 				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
@@ -413,6 +441,7 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MarqueeLabel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
@@ -442,6 +471,7 @@
 				CB2359962148C24700DB5240 /* NSNumberExtension.swift in Sources */,
 				CB2359A22148C24700DB5240 /* RootIndicatorView.swift in Sources */,
 				CB2359932148C24700DB5240 /* UIImage+Utilities.swift in Sources */,
+				CB2359C42148CA2600DB5240 /* RootNavigationChat.swift in Sources */,
 				CB23598D2148C24700DB5240 /* EnumExtension.swift in Sources */,
 				CB23598F2148C24700DB5240 /* UIDevice.swift in Sources */,
 				CB23598E2148C24700DB5240 /* UIImageView+Utilities.swift in Sources */,
@@ -450,10 +480,15 @@
 				CB2359A12148C24700DB5240 /* RootAuthManager.swift in Sources */,
 				CB2359A02148C24700DB5240 /* RootDateTimeUtils.swift in Sources */,
 				CB23598C2148C24700DB5240 /* TimeIntervalExtension.swift in Sources */,
+				CB2359CD2148F4D500DB5240 /* SenderCell.swift in Sources */,
 				CB2359972148C24700DB5240 /* RootColor.swift in Sources */,
+				CB2359C02148C80C00DB5240 /* LoginViewController.swift in Sources */,
 				CB2359A82148C24700DB5240 /* UsersViewController.swift in Sources */,
+				CB2359BE2148C60C00DB5240 /* RootSocketClientManager.swift in Sources */,
 				CB2359B82148C2E100DB5240 /* RootViewController.swift in Sources */,
+				CB2359C22148C84E00DB5240 /* ChatViewController.swift in Sources */,
 				CB2359822148C24700DB5240 /* ArrayExtension.swift in Sources */,
+				CB2359C92148F4CB00DB5240 /* ReceiverCell.swift in Sources */,
 				CB2359AB2148C24700DB5240 /* BaseTableViewCell.swift in Sources */,
 				CB2359A62148C24700DB5240 /* RootStyleManager.swift in Sources */,
 				CB2359BB2148C2E100DB5240 /* RootViewDeckController.swift in Sources */,
@@ -475,6 +510,7 @@
 				CB2359882148C24700DB5240 /* UITableViewExtension.swift in Sources */,
 				CB2359A72148C24700DB5240 /* RootAlert.swift in Sources */,
 				CB2359872148C24700DB5240 /* BundleExtension.swift in Sources */,
+				CB2359C62148CA3700DB5240 /* RootNavigationUser.swift in Sources */,
 				CB23599A2148C24700DB5240 /* RootString.swift in Sources */,
 				CB2359A52148C24700DB5240 /* RootError.swift in Sources */,
 				CB2359812148C24700DB5240 /* UIColor.swift in Sources */,

@@ -17,4 +17,5 @@ target 'HMDRealtimeChat' do
     pod 'SwiftyExtension'
     pod 'SwiftyUserDefaults'
     pod 'NotificationBannerSwift'
+    pod 'Alamofire'
 end

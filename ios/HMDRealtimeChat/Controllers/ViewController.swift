@@ -14,11 +14,7 @@ class ViewController: UIViewController {
     @IBOutlet private weak var textview: UITextView!
     @IBOutlet private weak var textfield: UITextField!
     
-    let manager = SocketManager(socketURL: URL(string: "http://192.168.1.15:5000")!,
-                                config: [.log(false),
-                                         .compress
-        ])
-    var socket: SocketIOClient!
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,25 +23,9 @@ class ViewController: UIViewController {
         
         textview.text = ""
         
-        socket = manager.defaultSocket
         
-        socket.on(clientEvent: .connect) {data, ack in
-            self.updateTextView(text: "connected successful")
-            
-            self.socket.emit("connectUser", with: ["khoinguyen"])
-        }
         
-        socket.on("chat") {data, ack in
-            print(data)
-            guard let cur = data[0] as? String else { return }
-            self.updateTextView(text: cur)
-        }
         
-        socket.on("connectUser") { (data, ack) in
-            print(data)
-        }
-        
-        socket.connect()
         
 
     }
@@ -56,7 +36,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func sendPressed(){
-        socket.emit("chat", with: [textfield.text!])
+     
     }
 
     func updateTextView(text: String){

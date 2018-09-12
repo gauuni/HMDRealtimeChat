@@ -1,4 +1,6 @@
 module.exports = {
-    'connectUser': 'connectUser'
+    'online': 'online',
+    'offline': 'offline',
+    'channelGenerated': 'channelGenerated'
 
 }
