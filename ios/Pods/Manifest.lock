@@ -1,11 +1,16 @@
 PODS:
   - IQKeyboardManagerSwift (6.1.1)
+  - MarqueeLabel/Swift (3.1.6)
+  - NotificationBannerSwift (1.6.3):
+    - MarqueeLabel/Swift
+    - SnapKit (~> 4.0)
   - NVActivityIndicatorView (4.3.0):
     - NVActivityIndicatorView/Presenter (= 4.3.0)
   - NVActivityIndicatorView/Presenter (4.3.0)
   - SDWebImage (4.4.2):
     - SDWebImage/Core (= 4.4.2)
   - SDWebImage/Core (4.4.2)
+  - SnapKit (4.0.0)
   - Socket.IO-Client-Swift (13.3.0):
     - Starscream (~> 3.0.2)
   - Starscream (3.0.5)
@@ -15,6 +20,7 @@ PODS:
 
 DEPENDENCIES:
   - IQKeyboardManagerSwift
+  - NotificationBannerSwift
   - NVActivityIndicatorView
   - SDWebImage
   - Socket.IO-Client-Swift
@@ -25,8 +31,11 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - IQKeyboardManagerSwift
+    - MarqueeLabel
+    - NotificationBannerSwift
     - NVActivityIndicatorView
     - SDWebImage
+    - SnapKit
     - Socket.IO-Client-Swift
     - Starscream
     - SwiftyExtension
@@ -35,14 +44,17 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   IQKeyboardManagerSwift: 977affaeb4d6e971975c7790a6850f31d38f1207
+  MarqueeLabel: 0c41f08ef5773e29c0f71064a8fa788a2fd8b365
+  NotificationBannerSwift: b231e4c3244848ef300e1c53ce027b9756b9b06f
   NVActivityIndicatorView: 963f62bf9f993fcf23218e55958e5b1761b9504c
   SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
+  SnapKit: a42d492c16e80209130a3379f73596c3454b7694
   Socket.IO-Client-Swift: 0afb192a562db90d50e3f7f7421c06925a3f0179
   Starscream: faf918b2f2eff7d5dd21180646bf015a669673bd
   SwiftyExtension: 2adeaa34eba897a8d1dd2b06826a2807217edcfb
   SwiftyUserDefaults: 3d273b1739b68ada3145dc754a70ec775bc5c8be
   ViewDeck: 942d90dd23c9f97cc8038be352255378167edcca
 
-PODFILE CHECKSUM: 3eb70c30ad5037809a2bd37aac67f596d17622d4
+PODFILE CHECKSUM: cb2e7fd453344a58b5f211892ab03b5f6c2745f1
 
 COCOAPODS: 1.5.0

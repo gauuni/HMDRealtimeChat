@@ -16,4 +16,5 @@ target 'HMDRealtimeChat' do
     pod 'NVActivityIndicatorView'
     pod 'SwiftyExtension'
     pod 'SwiftyUserDefaults'
+    pod 'NotificationBannerSwift'
 end

@@ -64,7 +64,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		82D80EAC89578081F5871EF1 /* Pods-DemoSocketIOClient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoSocketIOClient.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DemoSocketIOClient/Pods-DemoSocketIOClient.debug.xcconfig"; sourceTree = "<group>"; };
 		9CB0138231C8FB680EA80093 /* Pods-HMDRealtimeChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HMDRealtimeChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-HMDRealtimeChat/Pods-HMDRealtimeChat.release.xcconfig"; sourceTree = "<group>"; };
 		9E16D50CCA9C27E848D5C5E7 /* Pods_DemoSocketIOClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DemoSocketIOClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5ABC8653A5F4402A7CF6E83 /* Pods-HMDRealtimeChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HMDRealtimeChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HMDRealtimeChat/Pods-HMDRealtimeChat.debug.xcconfig"; sourceTree = "<group>"; };
@@ -122,7 +121,6 @@
 		CB2359B72148C2E100DB5240 /* RootContants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootContants.swift; sourceTree = "<group>"; };
 		CB82A95421479F4200538F1C /* HMDRealtimeChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HMDRealtimeChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6B29DA4E82886DA3CBD95AA /* Pods_HMDRealtimeChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HMDRealtimeChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		EA4559CF51563E449A99AAB9 /* Pods-DemoSocketIOClient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoSocketIOClient.release.xcconfig"; path = "Pods/Target Support Files/Pods-DemoSocketIOClient/Pods-DemoSocketIOClient.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,8 +139,6 @@
 		341680175E11848ACF74C137 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				82D80EAC89578081F5871EF1 /* Pods-DemoSocketIOClient.debug.xcconfig */,
-				EA4559CF51563E449A99AAB9 /* Pods-DemoSocketIOClient.release.xcconfig */,
 				C5ABC8653A5F4402A7CF6E83 /* Pods-HMDRealtimeChat.debug.xcconfig */,
 				9CB0138231C8FB680EA80093 /* Pods-HMDRealtimeChat.release.xcconfig */,
 			);
@@ -404,8 +400,11 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-HMDRealtimeChat/Pods-HMDRealtimeChat-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/MarqueeLabel/MarqueeLabel.framework",
 				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
+				"${BUILT_PRODUCTS_DIR}/NotificationBannerSwift/NotificationBannerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework",
 				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyExtension/SwiftyExtension.framework",
@@ -415,8 +414,11 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MarqueeLabel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NotificationBannerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketIO.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyExtension.framework",
