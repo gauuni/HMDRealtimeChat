@@ -1,0 +1,44 @@
+PODS:
+  - IQKeyboardManagerSwift (6.1.1)
+  - NVActivityIndicatorView (4.3.0):
+    - NVActivityIndicatorView/Presenter (= 4.3.0)
+  - NVActivityIndicatorView/Presenter (4.3.0)
+  - SDWebImage (4.4.2):
+    - SDWebImage/Core (= 4.4.2)
+  - SDWebImage/Core (4.4.2)
+  - Socket.IO-Client-Swift (13.3.0):
+    - Starscream (~> 3.0.2)
+  - Starscream (3.0.5)
+  - SwiftyExtension (1.2.1)
+  - ViewDeck (3.1.0)
+
+DEPENDENCIES:
+  - IQKeyboardManagerSwift
+  - NVActivityIndicatorView
+  - SDWebImage
+  - Socket.IO-Client-Swift
+  - SwiftyExtension
+  - ViewDeck
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - IQKeyboardManagerSwift
+    - NVActivityIndicatorView
+    - SDWebImage
+    - Socket.IO-Client-Swift
+    - Starscream
+    - SwiftyExtension
+    - ViewDeck
+
+SPEC CHECKSUMS:
+  IQKeyboardManagerSwift: 977affaeb4d6e971975c7790a6850f31d38f1207
+  NVActivityIndicatorView: 963f62bf9f993fcf23218e55958e5b1761b9504c
+  SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
+  Socket.IO-Client-Swift: 0afb192a562db90d50e3f7f7421c06925a3f0179
+  Starscream: faf918b2f2eff7d5dd21180646bf015a669673bd
+  SwiftyExtension: 2adeaa34eba897a8d1dd2b06826a2807217edcfb
+  ViewDeck: 942d90dd23c9f97cc8038be352255378167edcca
+
+PODFILE CHECKSUM: 77f63f106c3d78314a8d0438d840738e90fa5c15
+
+COCOAPODS: 1.5.0

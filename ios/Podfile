@@ -1,0 +1,19 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'HMDRealtimeChat' do
+  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+  use_frameworks!
+
+    # ignore all warnings from all pods
+    inhibit_all_warnings!
+
+  # Pods for HMDRealtimeChat
+    pod 'Socket.IO-Client-Swift'
+    pod 'ViewDeck'
+    pod 'IQKeyboardManagerSwift'
+    pod 'SDWebImage'
+    pod 'NVActivityIndicatorView'
+    pod 'SwiftyExtension'
+    
+end
