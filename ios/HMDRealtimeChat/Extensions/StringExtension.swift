@@ -276,15 +276,7 @@ extension String {
         return "unknow"
     }
     
-    var sha1: String {
-        let data = self.data(using: String.Encoding.utf8)!
-        var digest = [UInt8](repeating: 0, count:Int(CC_SHA1_DIGEST_LENGTH))
-        data.withUnsafeBytes {
-            _ = CC_SHA1($0, CC_LONG(data.count), &digest)
-        }
-        let hexBytes = digest.map { String(format: "%02hhx", $0) }
-        return hexBytes.joined()
-    }
+   
     
     //check is enable UIImpactFeedbackGenerator
     var isUIImpactFeedbackGenerator: Bool {
@@ -331,16 +323,6 @@ extension String {
         }
     }
     
-    
-    //remove Resource
-    func updateResource() -> String? {
-        return self.replace(target: "zing", withString: "").replace(target: "Zing", withString: "").replace(target: "vn", withString: "").replace(target: "mp3", withString: "").replace(target: "Mp3", withString: "")
-    }
-    
-    //check url is Youtube
-    func isUrlYoutube() -> Bool {
-        return self.contains(RootString.Player.sourceYoutube)
-    }
 }
 
 extension NSMutableAttributedString{

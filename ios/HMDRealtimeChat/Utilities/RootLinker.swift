@@ -18,7 +18,7 @@ class RootLinker: NSObject  {
     }
     
     class func getTopViewController() -> UIViewController? {
-        let rc = RootLinker.sharedInstance.getRootViewController()
+        let rc = RootLinker.sharedInstance.rootViewController
         if let nc = rc as? UINavigationController {
             return nc.visibleViewController?.presentedViewController ?? nc.visibleViewController
         } else {
@@ -47,40 +47,24 @@ class RootLinker: NSObject  {
         return viewController as! UINavigationController
     }
     
-    class func getAppDelegate() -> AppDelegate {
+    class var appDelegate: AppDelegate {
         return UIApplication.shared.delegate as! AppDelegate
     }
 
-    private func getRootViewController() -> UIViewController? {
+    private var rootViewController: UIViewController? {
         let viewDeck = UIApplication.shared.keyWindow?.rootViewController
         return viewDeck
     }
     
-    func getRootViewDeckController() -> RootViewDeckController? {
-        return getRootViewController() as? RootViewDeckController
+    var rootViewDeckController: RootViewDeckController? {
+        return rootViewController as? RootViewDeckController
+    }
+
+    var rootNav: UINavigationController? {
+        return rootViewDeckController?.centerViewController as? UINavigationController
     }
     
-    @objc var rootTabbarController: RootTabBarController? {
-        return RootLinker.sharedInstance.getRootViewDeckController()?.centerViewController as? RootTabBarController
-    }
-    
-    func getRootNav() -> UINavigationController? {
-        if let rootViewDeck = getRootViewDeckController(){
-            if let tabbarController = rootViewDeck.centerViewController as? UITabBarController{
-                return tabbarController.selectedViewController as? UINavigationController
-            }
-        }
-        
-        return nil
-        
-    }
-    
-    func activeTab(tab: NSInteger) {
-        if let rootTabbarViewController = rootTabbarController {
-            rootTabbarViewController.selectedIndex =  tab
-            AppState.sharedInstance.currentSelectedTab = tab
-        }
-    }
+
     
     func viewControllerForLink(link : NSURL, forTab tab : Int? = nil) -> RootViewController {
         _ = UIStoryboard(name: "Main", bundle: Bundle.main)

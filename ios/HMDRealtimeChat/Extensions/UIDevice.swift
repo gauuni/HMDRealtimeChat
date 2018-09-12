@@ -22,6 +22,7 @@ public extension UIDevice {
         case iPhone6Plus
         case Unknown
     }
+    
     var screenType: ScreenType {
         guard iPhone else { return .Unknown}
         switch UIScreen.main.nativeBounds.height {
@@ -95,97 +96,5 @@ extension UIDevice {
         }
         return identifier
     }
-    
-    //check is enable UIImpactFeedbackGenerator
-    static var isSupportHapticFeedback: Bool {
-        
-        var modelName = self.modelName
-        
-        if modelName.contains("iPad"){
-            return false
-        }
-        
-        modelName = modelName.replace(target: "iPhone", withString: "")
-        let range = (modelName as NSString).range(of: ",")
-        if range.location != NSNotFound{
-            modelName = modelName.substringTo(index: range.location)
-        }
-        if let intValue = Int(modelName){
-            if intValue > 8{
-                return true
-            }
-        }
-        
-        return false
-        
-    }
-    
-    static func vibrate(){
-        if #available(iOS 10.0, *) {
-            if self.isSupportHapticFeedback{
-                let feedbackGenerator = UIImpactFeedbackGenerator.init(style: .heavy)
-                
-                // Prepare the generator when the gesture begins.
-                feedbackGenerator.prepare()
-                feedbackGenerator.impactOccurred()
-                return
-            }
-        }
-        
-        // Fallback on earlier versions
-        AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
-    }
-    
-    static var isIphone4: Bool {
-        return modelName == "iPhone 4S" || modelName == "iPhone 4" || UIDevice.isSimulatorIPhone4
-    }
-    
-    static var isIphone5: Bool {
-        return modelName == "iPhone 5" || modelName == "iPhone 5C" || modelName == "iPhone 5S" || UIDevice.isSimulatorIPhone5
-    }
-    
-    static var isIphone6: Bool {
-        return modelName == "iPhone 6" || UIDevice.isSimulatorIPhone6
-    }
-    static var isIphone6Plus: Bool {
-        return modelName == "iPhone 6 Plus" || UIDevice.isSimulatorIPhone6Plus
-    }
-    
-    static var isIpad: Bool {
-        if UIDevice.current.model.contains("iPad") {
-            return true
-        }
-        return false
-    }
-    
-    static var isIphone: Bool {
-        return !self.isIpad
-    }
-    
-    /// Check if current device is iPhone4S (and earlier) relying on screen heigth
-    static var isSimulatorIPhone4: Bool {
-        return UIDevice.isSimulatorWithScreenHeigth(480)
-    }
-    
-    /// Check if current device is iPhone5 relying on screen heigth
-    static var isSimulatorIPhone5: Bool {
-        return UIDevice.isSimulatorWithScreenHeigth(568)
-    }
-    
-    /// Check if current device is iPhone6 relying on screen heigth
-    static var isSimulatorIPhone6: Bool {
-        return UIDevice.isSimulatorWithScreenHeigth(667)
-    }
-    
-    /// Check if current device is iPhone6 Plus relying on screen heigth
-    static var isSimulatorIPhone6Plus: Bool {
-        return UIDevice.isSimulatorWithScreenHeigth(736)
-    }
-    
-    private static func isSimulatorWithScreenHeigth(_ heigth: CGFloat) -> Bool {
-        let screenSize: CGRect = UIScreen.main.bounds
-        return modelName == "Simulator" && screenSize.height == heigth
-    }
-    
     
 }

@@ -10,6 +10,7 @@ PODS:
     - Starscream (~> 3.0.2)
   - Starscream (3.0.5)
   - SwiftyExtension (1.2.1)
+  - SwiftyUserDefaults (3.0.1)
   - ViewDeck (3.1.0)
 
 DEPENDENCIES:
@@ -18,6 +19,7 @@ DEPENDENCIES:
   - SDWebImage
   - Socket.IO-Client-Swift
   - SwiftyExtension
+  - SwiftyUserDefaults
   - ViewDeck
 
 SPEC REPOS:
@@ -28,6 +30,7 @@ SPEC REPOS:
     - Socket.IO-Client-Swift
     - Starscream
     - SwiftyExtension
+    - SwiftyUserDefaults
     - ViewDeck
 
 SPEC CHECKSUMS:
@@ -37,8 +40,9 @@ SPEC CHECKSUMS:
   Socket.IO-Client-Swift: 0afb192a562db90d50e3f7f7421c06925a3f0179
   Starscream: faf918b2f2eff7d5dd21180646bf015a669673bd
   SwiftyExtension: 2adeaa34eba897a8d1dd2b06826a2807217edcfb
+  SwiftyUserDefaults: 3d273b1739b68ada3145dc754a70ec775bc5c8be
   ViewDeck: 942d90dd23c9f97cc8038be352255378167edcca
 
-PODFILE CHECKSUM: 77f63f106c3d78314a8d0438d840738e90fa5c15
+PODFILE CHECKSUM: 3eb70c30ad5037809a2bd37aac67f596d17622d4
 
 COCOAPODS: 1.5.0

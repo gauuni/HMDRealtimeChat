@@ -174,21 +174,7 @@ extension UIView {
     }
     
    
-    func leftWithOffset (offset: CGFloat) -> CGFloat {
-        return self.left - offset
-    }
     
-    func rightWithOffset (offset: CGFloat) -> CGFloat {
-        return self.right + offset
-    }
-    
-    func topWithOffset (offset: CGFloat) -> CGFloat {
-        return self.top - offset
-    }
-    
-    func botttomWithOffset (offset: CGFloat) -> CGFloat {
-        return self.bottom + offset
-    }
     
     func snapshot() -> UIImage? {
         if #available(iOS 10.0, *) {

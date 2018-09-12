@@ -7,21 +7,3 @@
 //
 
 import UIKit
-import HMDMusicManager
-
-extension UITableView{
-    
-    func reloadSongCell(with data: [PlaylistItemObject], playlistId: String, codeCountry: String = RootString.Player.noneCodeCountry){
-        guard let indexPathsForVisibleRows = self.indexPathsForVisibleRows else {
-            return
-        }
-        
-        for indexPath in indexPathsForVisibleRows{
-            let item = data[indexPath.row]
-            guard let cell = self.cellForRow(at: indexPath) as? SongCell else{
-                return
-            }
-            cell.updateIndicatorStatus(item: item, playlistId: playlistId, codeCountry: codeCountry)
-        }
-    }
-}

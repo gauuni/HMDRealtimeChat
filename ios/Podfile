@@ -15,5 +15,5 @@ target 'HMDRealtimeChat' do
     pod 'SDWebImage'
     pod 'NVActivityIndicatorView'
     pod 'SwiftyExtension'
-    
+    pod 'SwiftyUserDefaults'
 end
