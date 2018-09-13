@@ -7,29 +7,8 @@
 //
 
 import UIKit
-
-class MessageResponse: NSObject{
-    var sender: String = ""
-    var receiver: String = ""
-    var content: String = ""
-    
-    init(data: [Any]) {
-        super.init()
-        if let stringArr = data as? [String]{
-            if stringArr.count > 0{
-                self.sender = stringArr[0]
-            }
-            
-            if stringArr.count > 1{
-                self.receiver = stringArr[1]
-            }
-            
-            if stringArr.count > 2{
-                self.content = stringArr[2]
-            }
-        }
-    }
-}
+import AudioToolbox
+import ObjectMapper
 
 class ChatViewController: RootViewController {
     
@@ -66,12 +45,30 @@ class ChatViewController: RootViewController {
         self.customization()
         self.fetchData()
         
-        RootSocketClientManager.shared.socket.on(self.channelId) { (data, ack) in
-            let message = MessageResponse(data: data)
-            self.items.append(message)
-            self.tableView.insertRows(at: [IndexPath(row: self.items.count-1, section: 0)], with: .none)
+        RootAPI.join(userId: RootAuthManager.shared.id, channelId: self.channelId) { (response) in
+            RootSocketClientManager.shared.socket.on(self.channelId) { (data, ack) in
+                
+                guard let dict = data.first as? NSDictionary else { return }
+                guard let message = Mapper<MessageResponse>().map(JSONObject: dict) else { return }
+                if message.receiverId == RootAuthManager.shared.id{
+                    self.playSound()
+                }
+                
+                self.items.append(message)
+                self.tableView.insertRows(at: [IndexPath(row: self.items.count-1, section: 0)], with: .none)
+            }
         }
         
+        
+    }
+    
+    func playSound()  {
+        var soundURL: NSURL?
+        var soundID:SystemSoundID = 0
+        let filePath = Bundle.main.path(forResource: "newMessage", ofType: "wav")
+        soundURL = NSURL(fileURLWithPath: filePath!)
+        AudioServicesCreateSystemSoundID(soundURL!, &soundID)
+        AudioServicesPlaySystemSound(soundID)
     }
     
     //MARK: ViewController lifecycle
@@ -168,7 +165,7 @@ extension ChatViewController{
         if let text = self.inputTextField.text {
             if text.count > 0 {
                 
-                RootAPI.publish(channelId: self.channelId, senderId: RootAuthManager.sharedInstance.username, receiverId: receiver, message: text) { (response) in
+                RootAPI.publish(channelId: self.channelId, senderId: RootAuthManager.shared.id, receiverId: receiver, message: text) { (response) in
                     
                 }
                 self.inputTextField.text = ""
@@ -206,16 +203,28 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let message = self.items[indexPath.row]
-        if message.sender == RootAuthManager.sharedInstance.username{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "Sender", for: indexPath) as! SenderCell
+        if message.senderId == RootAuthManager.shared.id{
+            let cell = tableView.dequeueReusableCell(cellClass: ReceiverCell.self) as! ReceiverCell
+            
             cell.clearCellData()
             cell.message.text = message.content
+
             return cell
         }
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Receiver", for: indexPath) as! ReceiverCell
+        let cell = tableView.dequeueReusableCell(cellClass: SenderCell.self) as! SenderCell
         cell.clearCellData()
         cell.message.text = message.content
+        
+        if indexPath.row != 0{
+            let previousMessage = self.items[indexPath.row-1]
+            if previousMessage.senderId == message.senderId{
+                cell.profilePic.isHidden = true
+            }else{
+                cell.profilePic.isHidden = false
+            }
+        }
+        
         return cell
     }
     

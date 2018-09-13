@@ -10,17 +10,45 @@ import UIKit
 import Alamofire
 import AlamofireObjectMapper
 
+typealias UserResultHandler = (GenericObjectResponse<UserResponse>?) -> ()
+typealias ListUsersResultHandler = (GenericArrayObjectResponse<UserResponse>?) -> ()
+typealias GenericResultHandler = (GenericResponse<Any>?) -> ()
+
 class RootAPI: NSObject {
 
     static let rootURL = "http://192.168.1.15:5000/"
+    static var auth: String { return rootURL + "api/auth/" }
     static var conversation: String { return rootURL + "api/conversation/" }
+    static var register: String { return auth + "register" }
+    static var login: String { return auth + "login" }
     static var users : String { return conversation + "users"}
-    static var channel : String { return conversation + "channel"}
+    static var channel : String { return conversation + "channels"}
     static var publish : String { return conversation + "publish"}
+    static var join : String { return conversation + "join"}
     
-    @discardableResult static func fetchOnlineUsers(resultHandler: ((GenericArrayResponse<String>?) -> ())?) -> DataRequest?{
+    @discardableResult static func signIn(email: String, password: String, resultHandler: UserResultHandler?) -> DataRequest?{
+        let params = ["email": email,
+                      "password": password]
+        
+        return Alamofire.request(login, method: .post, parameters: params)
+            .responseObject { (response: DataResponse<GenericObjectResponse<UserResponse>>) in
+                resultHandler?(response.value)
+        }
+    }
+    
+    @discardableResult static func join(userId: String, channelId: String, resultHandler: GenericResultHandler?) -> DataRequest?{
+        let params = ["userId": userId,
+                      "channelId": channelId]
+        
+        return Alamofire.request(join, method: .post, parameters: params)
+            .responseObject { (response: DataResponse<GenericResponse<Any>>) in
+                resultHandler?(response.value)
+        }
+    }
+    
+    @discardableResult static func fetchOnlineUsers(resultHandler: ListUsersResultHandler?) -> DataRequest?{
         return Alamofire.request(users)
-            .responseObject { (response: DataResponse<GenericArrayResponse<String>>) in
+            .responseObject { (response: DataResponse<GenericArrayObjectResponse<UserResponse>>) in
                 resultHandler?(response.value)
         }
     }
@@ -39,7 +67,7 @@ class RootAPI: NSObject {
         let params = ["channelId": channelId,
                       "sender": senderId,
                       "receiver": receiverId,
-                      "message": message]
+                      "content": message]
         
         return Alamofire.request(publish, method: .post, parameters: params)
             .responseObject { (response: DataResponse<GenericResponse<Any>>) in

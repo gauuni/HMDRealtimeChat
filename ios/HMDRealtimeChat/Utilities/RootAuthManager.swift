@@ -11,10 +11,11 @@ import UIKit
 
 class RootAuthManager: NSObject {
     
-    static let sharedInstance = RootAuthManager()
+    static let shared = RootAuthManager()
     
-    var username = ""
-
+    var id = ""
+    var name = ""
+    
     
     override init() {
         super.init()

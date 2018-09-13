@@ -13,6 +13,7 @@ class UserCell: BaseTableViewCell {
     @IBOutlet private weak var imgViewAvatar: UIImageView!
     @IBOutlet private weak var lblUsername: UILabel!
     @IBOutlet private weak var imgViewStatus: UIImageView!
+    @IBOutlet private weak var lblCount: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,8 +26,9 @@ class UserCell: BaseTableViewCell {
         // Configure the view for the selected state
     }
     
-    func binding(username: String){
+    func binding(username: String, count: Int){
         lblUsername.text = username
+        lblCount.text = count == 0 ? nil : "\(count)"
     }
     
 }

@@ -23,12 +23,12 @@ router.post('/register', (req, res)=>{
 
     (err, user)=>{
         if (err){
-            return sendResponseDataWith(res, 500, "There was a problem registering the user")
+            return Utils.sendResponseDataWith(res, 500, "There was a problem registering the user")
         }
         // create a token
-        var token = createToken(user._id)
+        var token = Utils.createToken(user._id)
         
-        sendResponseDataWith(res, 200, null, {token: token})
+        Utils.sendResponseDataWith(res, 200, null, {token: user})
     })
 })
 
@@ -69,7 +69,7 @@ router.post("/login", (req, res)=>{
             }
 
             if (!user){
-                return sendResponseDataWith(res, 200, "Not found user with this email.")
+                return Utils.sendResponseDataWith(res, 200, "Not found user with this email.")
             }
 
             // check valid password
@@ -79,10 +79,11 @@ router.post("/login", (req, res)=>{
             }
 
             var token = Utils.createToken(user._id)
-            Utils.sendResponseDataWith(res, 200, null, {token: token})
+            Utils.sendResponseDataWith(res, 200, null, user)
             
-    })
+    })    
 })
+
 
 
 module.exports = router

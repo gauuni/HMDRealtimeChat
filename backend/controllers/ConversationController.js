@@ -4,8 +4,10 @@ var bodyParser = require('body-parser')
 router.use(bodyParser.urlencoded({ extended: false }))
 router.use(bodyParser.json())
 var User = require('../schemas/User')
+var Channel = require('../schemas/Channel')
+var Message = require('../schemas/Message')
 var Utils = require('../utils')
-var Channels = require('../socketChannels')
+var config = require('../config')
 var uniqid = require('uniqid')
 
 var userChannels = []
@@ -26,21 +28,29 @@ module.exports = (app, io) => {
     // the socket won't be connected to the websocket server.
     io.on('connection', function (socket) {
 
-        socket.on(Channels.online, username => {
-            users.push({"username": username, "socketId": socket.id})
-            console.log(username + " is active")
-            io.emit(Channels.online, username)
+        socket.on(config.channelOnline, userId => {
+            User.findById(userId, (err, user) =>{
+                if (user){
+                    user.set({socketId: socket.id})
+                    user.save()
+                    console.log(user.name + "-" + socket.id + " is active")
+                    io.emit(config.channelOnline, user)
+                }
+            })
         })
 
         socket.on('disconnect', () =>{
-            var foundUser = users.find(user => {
-                return user.socketId == socket.id
-            })
-            
-            console.log(foundUser.username + " is leaving")
-            io.emit(Channels.offline, foundUser.username)
 
-            users.pop(foundUser)
+            User.findOne({socketId: socket.id}, (err, user) =>{
+                if (user){
+                    user.set({socketId: null})
+                    user.save()
+                    console.log(user.name + " is leaving")
+                    io.emit(config.channelOffline, user)
+                }
+            })
+
+            users.splice(users.indexOf(users), 1 );
         })
 
     });
@@ -54,23 +64,90 @@ module.exports = (app, io) => {
     
     router.post('/publish', (req, res) =>{
         var channelId = req.body.channelId
-        var sender = req.body.sender
-        var receiver = req.body.receiver
-        var message = req.body.message
-        io.emit(channelId, sender, receiver, message)
+        var senderId = req.body.sender
+        var receiverId = req.body.receiver
+        var content = req.body.content
+
+        Message.create({
+            senderId: senderId,
+            recieverId: receiverId,
+            channelId: channelId,
+            content: content
+        }, (err, message) =>{
+
+            io.emit(receiverId, message)
+            io.emit(channelId, message) 
+
+        })
+
         Utils.sendResponseDataWith(res, 200, null, null)
+       
     })
 
     router.post('/channels', (req, res)=>{
-        var sender = req.body.sender
-        var receiver = req.body.receiver
-        var channelId = uniqid('socketio-')
-        io.emit(Channels.channelGenerated, sender, receiver, channelId)
-        Utils.sendResponseDataWith(res, 200, null, channelId)
+        var senderId = req.body.sender
+        var receiverId = req.body.receiver
+
+        // check if channel is exsisted
+        Channel.findOne({users: [senderId, receiverId]}, (err, channel) =>{
+
+            if (channel) { 
+                User.update({ _id: senderId }, { $push: { channels: channel }}).exec();
+                Utils.sendResponseDataWith(res, 200, null, channel.id)
+                return
+            }
+        
+            // create a new one
+            Channel.create({
+                users: [senderId, receiverId]
+            }, (err, channel) =>{
+                if (channel) {
+                    User.update({ _id: senderId }, { $push: { channels: channel }}).exec();
+                    Utils.sendResponseDataWith(res, 200, null, channel.id)
+                }
+            })
+
+        })
+
+        
+        
+    })
+
+    router.post('/join', (req, res) =>{
+        var channelId = req.body.channelId
+        var userId = req.body.channelId
+
+        User.findById(userId, (err, user)=>{
+            if (user){
+                var found = user.channels.some(el=>{
+                    return el.id = channelId
+                })
+
+                if (!found){
+                    Channel.findById(channelId, (err, channel) =>{
+                        if (channel){
+                            user.push({ channels: channel})
+                        }
+                    })
+                }
+
+            }
+        })
+
+        Utils.sendResponseDataWith(res, 200, null, null)
     })
 
     router.get('/users', (req, res) =>{
-        Utils.sendResponseDataWith(res, 200, null, users)
+        
+        User.find({socketId: {$ne : null}}, (err, users)=>{
+            if (err){
+                Utils.sendResponseDataWith(res, 500, null, err)
+                return
+            }
+
+            Utils.sendResponseDataWith(res, 200, null, users)
+        })
+
     })
 
     app.use('/api/conversation', router)

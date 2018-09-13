@@ -71,6 +71,8 @@
 		CB2359CE2148F4D500DB5240 /* SenderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB2359CC2148F4D500DB5240 /* SenderCell.xib */; };
 		CB2359D12149024500DB5240 /* RootAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2359D02149024500DB5240 /* RootAPI.swift */; };
 		CB2359ED214902FB00DB5240 /* GenericResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2359EC214902FB00DB5240 /* GenericResponse.swift */; };
+		CB2359EF2149246800DB5240 /* newMessage.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB2359EE2149246800DB5240 /* newMessage.wav */; };
+		CB72A712214A1B9C00BF3085 /* UserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB72A711214A1B9C00BF3085 /* UserResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -140,6 +142,8 @@
 		CB2359CC2148F4D500DB5240 /* SenderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SenderCell.xib; sourceTree = "<group>"; };
 		CB2359D02149024500DB5240 /* RootAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootAPI.swift; sourceTree = "<group>"; };
 		CB2359EC214902FB00DB5240 /* GenericResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericResponse.swift; sourceTree = "<group>"; };
+		CB2359EE2149246800DB5240 /* newMessage.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = newMessage.wav; sourceTree = "<group>"; };
+		CB72A711214A1B9C00BF3085 /* UserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResponse.swift; sourceTree = "<group>"; };
 		CB82A95421479F4200538F1C /* HMDRealtimeChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HMDRealtimeChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6B29DA4E82886DA3CBD95AA /* Pods_HMDRealtimeChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HMDRealtimeChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -288,6 +292,7 @@
 		CB23597A2148C24700DB5240 /* SupportFiles */ = {
 			isa = PBXGroup;
 			children = (
+				CB2359EE2149246800DB5240 /* newMessage.wav */,
 				CB23597B2148C24700DB5240 /* Assets.xcassets */,
 				CB23597C2148C24700DB5240 /* AppDelegate.swift */,
 				CB23597D2148C24700DB5240 /* Info.plist */,
@@ -328,6 +333,7 @@
 			isa = PBXGroup;
 			children = (
 				CB2359EC214902FB00DB5240 /* GenericResponse.swift */,
+				CB72A711214A1B9C00BF3085 /* UserResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -411,6 +417,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB2359A92148C24700DB5240 /* LaunchScreen.storyboard in Resources */,
+				CB2359EF2149246800DB5240 /* newMessage.wav in Resources */,
 				CB2359AA2148C24700DB5240 /* Main.storyboard in Resources */,
 				CB2359CA2148F4CB00DB5240 /* ReceiverCell.xib in Resources */,
 				CB2359AE2148C24700DB5240 /* Assets.xcassets in Resources */,
@@ -524,6 +531,7 @@
 				CB23599E2148C24700DB5240 /* RootFunctions.swift in Sources */,
 				CB2359AF2148C24700DB5240 /* AppDelegate.swift in Sources */,
 				CB2359A32148C24700DB5240 /* RootMessage.swift in Sources */,
+				CB72A712214A1B9C00BF3085 /* UserResponse.swift in Sources */,
 				CB2359BC2148C2E100DB5240 /* RootContants.swift in Sources */,
 				CB2359D12149024500DB5240 /* RootAPI.swift in Sources */,
 				CB2359AD2148C24700DB5240 /* UserCell.swift in Sources */,
@@ -696,7 +704,10 @@
 				DEVELOPMENT_TEAM = P8HP85BVYU;
 				INFOPLIST_FILE = "$(SRCROOT)/HMDRealtimeChat/SupportFiles/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.nguyen.DemoSocketIOClient;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -713,7 +724,10 @@
 				DEVELOPMENT_TEAM = P8HP85BVYU;
 				INFOPLIST_FILE = "$(SRCROOT)/HMDRealtimeChat/SupportFiles/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.nguyen.DemoSocketIOClient;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

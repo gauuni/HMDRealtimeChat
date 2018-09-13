@@ -22,8 +22,10 @@ class RootSocketClientManager: NSObject {
     private static let socketURL = "http://192.168.1.15:5000"
     private let manager = SocketManager(socketURL: URL(string: RootSocketClientManager.socketURL)!,
                                 config: [.log(false),
-                                         .compress ])
+                                         .compress,
+                                         .forceNew(true)])
     var socket: SocketIOClient!
+    var banner: StatusBarNotificationBanner?
     
     static let shared = RootSocketClientManager()
     
@@ -38,7 +40,7 @@ class RootSocketClientManager: NSObject {
         
         socket.on(clientEvent: .connect) {data, ack in
             
-            self.socket.emit(RootSocketClientManager.SocketEvents.online, with: [RootAuthManager.sharedInstance.username])
+            self.socket.emit(RootSocketClientManager.SocketEvents.online, with: [RootAuthManager.shared.id])
             completionHandler?()
         }
         
@@ -47,33 +49,8 @@ class RootSocketClientManager: NSObject {
         }
         
         socket.on(clientEvent: .disconnect) { (data, ack) in
-            completionHandler?()
-        }
-        
-        socket.on(RootSocketClientManager.SocketEvents.channelGenerated) { (data, ack) in
-            guard let stringArr = data as? [String] else { return }
-            let sender = stringArr[0]
-            let receiver = stringArr[1]
-            let channelId = stringArr[2]
-            
-            if sender == RootAuthManager.sharedInstance.username { return }
-            if receiver != RootAuthManager.sharedInstance.username { return }
-            
-            RootAlert.sharedInstance.showConfirm(title: nil, message: sender + " has sent you a message") { (isAccept) in
-                if isAccept{
-                    
-                    RootLinker.getTopViewController()?.popVC()
-                    
-                    if let userVC = RootLinker.getTopViewController() as? UsersViewController{
-                        let vc = RootLinker.getViewController(storyboard: .Main, aClass: ChatViewController.self) as! ChatViewController
-                        vc.receiver = receiver
-                        vc.channelId = channelId
-                        userVC.pushVC(vc: vc)
-                        return
-                    }
 
-                }
-            }
+            completionHandler?()
         }
         
         socket.connect()
@@ -81,15 +58,21 @@ class RootSocketClientManager: NSObject {
     }
     
     func showBanner(title: String, style: BannerStyle){
-        let banner = StatusBarNotificationBanner(title: title, style: style)
-        banner.show()
+        if banner != nil{
+            banner?.dismiss()
+            banner = nil
+        }
+        banner = StatusBarNotificationBanner(title: title, style: style)
+        banner?.show()
+        
     }
     
     public func disconnect(){
         
-//        self.socket.emit(RootSocketClientManager.SocketEvents.offline, with: [RootAuthManager.sharedInstance.username])
+//        self.socket.emit(RootSocketClientManager.SocketEvents.offline, with: [RootAuthManager.shared.id])
         
-        RootAuthManager.sharedInstance.username = ""
+        RootAuthManager.shared.id = ""
+        RootAuthManager.shared.name = ""
         
         socket.removeAllHandlers()
         socket.disconnect()
@@ -101,5 +84,11 @@ class RootSocketClientManager: NSObject {
     
     public func send(channelId: String, content: [Any]){
         self.emit(topic: channelId, content: content)
+    }
+    
+    public func on(event: String, completHandler: (([Any])->())?){
+        socket.on(event) { (data, ack) in
+            completHandler?(data)
+        }
     }
 }

@@ -20,7 +20,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="77.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default profile" translatesAutoresizingMaskIntoConstraints="NO" id="Ahl-JZ-xSI">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="name" translatesAutoresizingMaskIntoConstraints="NO" id="Ahl-JZ-xSI">
                         <rect key="frame" x="16" y="16.5" width="44" height="44.5"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="44" id="Y40-IN-W77"/>
@@ -40,9 +40,15 @@
                             <userDefinedRuntimeAttribute type="boolean" keyPath="isCircle" value="YES"/>
                         </userDefinedRuntimeAttributes>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tFY-i3-5N0">
-                        <rect key="frame" x="68" y="28" width="188.5" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tFY-i3-5N0">
+                        <rect key="frame" x="68" y="28" width="165" height="21"/>
                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hko-LD-cPR">
+                        <rect key="frame" x="249" y="32" width="31" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -50,9 +56,11 @@
                 <constraints>
                     <constraint firstItem="tFY-i3-5N0" firstAttribute="centerY" secondItem="Ahl-JZ-xSI" secondAttribute="centerY" id="9Lw-EV-snx"/>
                     <constraint firstItem="99c-5p-ok7" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="H3u-eg-XiU"/>
-                    <constraint firstItem="99c-5p-ok7" firstAttribute="leading" secondItem="tFY-i3-5N0" secondAttribute="trailing" constant="32" id="IwM-37-KHB"/>
+                    <constraint firstItem="hko-LD-cPR" firstAttribute="leading" secondItem="tFY-i3-5N0" secondAttribute="trailing" constant="16" id="KLB-gp-hHo"/>
                     <constraint firstAttribute="trailing" secondItem="99c-5p-ok7" secondAttribute="trailing" constant="16" id="Kkv-TF-cPF"/>
                     <constraint firstItem="Ahl-JZ-xSI" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="ZS2-O5-Cos"/>
+                    <constraint firstItem="99c-5p-ok7" firstAttribute="leading" secondItem="hko-LD-cPR" secondAttribute="trailing" constant="8.5" id="cwo-To-f0o"/>
+                    <constraint firstItem="hko-LD-cPR" firstAttribute="centerY" secondItem="99c-5p-ok7" secondAttribute="centerY" id="dBP-rf-WOK"/>
                     <constraint firstItem="Ahl-JZ-xSI" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="m1E-y1-kQg"/>
                     <constraint firstItem="tFY-i3-5N0" firstAttribute="leading" secondItem="Ahl-JZ-xSI" secondAttribute="trailing" constant="8" id="wgE-rp-ka2"/>
                 </constraints>
@@ -61,12 +69,13 @@
             <connections>
                 <outlet property="imgViewAvatar" destination="Ahl-JZ-xSI" id="bGO-xB-LMG"/>
                 <outlet property="imgViewStatus" destination="99c-5p-ok7" id="zlc-3U-7Me"/>
+                <outlet property="lblCount" destination="hko-LD-cPR" id="dvU-IX-vt3"/>
                 <outlet property="lblUsername" destination="tFY-i3-5N0" id="kiT-g7-C5i"/>
             </connections>
             <point key="canvasLocation" x="34" y="71"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="default profile" width="27" height="27"/>
+        <image name="name" width="24" height="24"/>
     </resources>
 </document>

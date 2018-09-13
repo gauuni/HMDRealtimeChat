@@ -10,20 +10,27 @@ import UIKit
 
 class LoginViewController: RootViewController {
 
-    @IBOutlet private weak var textfieldUsername: UITextField!
+    @IBOutlet private weak var txtEmail: UITextField!
+    @IBOutlet private weak var txtPassword: UITextField!
     
     @IBAction func loginPressed(){
         self.showLoading()
         
-        RootAuthManager.sharedInstance.username = textfieldUsername.text!
-        RootSocketClientManager.shared.connect() {
+        RootAPI.signIn(email: txtEmail.text!, password: txtPassword.text!) { (response) in
+            guard let user = response?.data else { return }
+            RootAuthManager.shared.id = user.id
+            RootAuthManager.shared.name = user.name
+            
             self.hideLoading()
             
-//            RootLinker.sharedInstance.rootViewDeckController?.leftViewController = RootLinker.getViewController(storyboard: .Main, aClass: RootNavigationUser.self)
-            
-            RootLinker.sharedInstance.rootViewDeckController?.centerViewController = RootLinker.getViewController(storyboard: .Main, aClass: RootNavigationUser.self)
-
+            RootSocketClientManager.shared.connect() {
+                
+                RootLinker.sharedInstance.rootViewDeckController?.centerViewController = RootLinker.getViewController(storyboard: .Main, aClass: RootNavigationUser.self)
+                
+            }
         }
+        
+        
     }
 
 }
