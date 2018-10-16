@@ -73,6 +73,7 @@
 		CB2359ED214902FB00DB5240 /* GenericResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2359EC214902FB00DB5240 /* GenericResponse.swift */; };
 		CB2359EF2149246800DB5240 /* newMessage.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB2359EE2149246800DB5240 /* newMessage.wav */; };
 		CB72A712214A1B9C00BF3085 /* UserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB72A711214A1B9C00BF3085 /* UserResponse.swift */; };
+		CBD908DE2175D3CA00A27A6E /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = CBD908DD2175D3C900A27A6E /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -145,6 +146,7 @@
 		CB2359EE2149246800DB5240 /* newMessage.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = newMessage.wav; sourceTree = "<group>"; };
 		CB72A711214A1B9C00BF3085 /* UserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResponse.swift; sourceTree = "<group>"; };
 		CB82A95421479F4200538F1C /* HMDRealtimeChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HMDRealtimeChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CBD908DD2175D3C900A27A6E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		E6B29DA4E82886DA3CBD95AA /* Pods_HMDRealtimeChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HMDRealtimeChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -341,6 +343,7 @@
 		CB82A94B21479F4200538F1C = {
 			isa = PBXGroup;
 			children = (
+				CBD908DD2175D3C900A27A6E /* README.md */,
 				CB2359412148C24700DB5240 /* HMDRealtimeChat */,
 				CB82A95521479F4200538F1C /* Products */,
 				341680175E11848ACF74C137 /* Pods */,
@@ -422,6 +425,7 @@
 				CB2359CA2148F4CB00DB5240 /* ReceiverCell.xib in Resources */,
 				CB2359AE2148C24700DB5240 /* Assets.xcassets in Resources */,
 				CB2359B02148C24700DB5240 /* Info.plist in Resources */,
+				CBD908DE2175D3CA00A27A6E /* README.md in Resources */,
 				CB2359CE2148F4D500DB5240 /* SenderCell.xib in Resources */,
 				CB2359AC2148C24700DB5240 /* UserCell.xib in Resources */,
 			);
